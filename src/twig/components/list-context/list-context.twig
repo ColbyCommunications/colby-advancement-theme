@@ -1,0 +1,37 @@
+{% if in_component_library %}
+  {% set context = '@context' %}
+{% else %}
+  {% set context = 'context.twig' %}
+{% endif %}
+
+{% set static = size == 'small' ? true : false %}
+
+<div class="list-context">
+  <div class="list-context__inner md:grid grid-cols-12 gap-10 max-w-screen-2xl w-full space-y-8 md:space-y-0">
+    <div class="list-context__context {% if columns == 2 %}md:col-span-4{% else %}md:col-span-5{% endif %}">
+      {% include context with {
+        size: 'medium',
+        static: static,
+        subheading: subheading,
+        heading: heading,
+        paragraph: paragraph,
+        buttons: {
+          items: buttons,
+        }
+      } %}
+    </div>
+    <div class="list-context__main {% if columns == 2 %}md:col-span-8{% else %}md:col-span-6 md:col-start-7{% endif %}">
+      <ul class="list-context__list grid grid-cols-1 {% if columns == 2 %}md:grid-cols-2{% endif %} gap-2 ml-4">
+        {% for item in items %}
+          <li class="font-body font-semibold text-16 leading-130 text-indigo-600 list-disc">
+            {% if item.link.url %}
+              <a class="text-indigo hover:text-indigo-600 no-underline hover:underline transition-all duration-200 ease-in-out" href="{{ item.link.url }}">{{ item.link.title }}</a>
+            {% else %}
+              <span class="text-indigo">{{ item.title }}</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
