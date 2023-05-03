@@ -88,9 +88,9 @@ new AdvancementSite();
  * Enqueue scripts and styles.
  */
 function advancement_theme_scripts() {
-	wp_enqueue_style( 'hvh', get_template_directory_uri() . '/dist/styles/scripts.css', array(), date( 'H:i:s' ) );
+	wp_enqueue_style( 'hvh', get_stylesheet_directory_uri() . '/dist/styles/scripts.css', array(), date( 'H:i:s' ) );
 	// wp_enqueue_style('tailwind', get_template_directory_uri() . '/dist/styles/tailwind.css', array(), date("H:i:s"));
-	wp_enqueue_script( 'main', get_template_directory_uri() . '/dist/scripts.js', array(), date( 'H:i:s' ), true );
+	wp_enqueue_script( 'main', get_stylesheet_directory_uri() . '/dist/scripts.js', array(), date( 'H:i:s' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'advancement_theme_scripts' );
 
