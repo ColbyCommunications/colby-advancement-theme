@@ -4,3 +4,7 @@
  * Author: Brandon Waltz
  * Template: colby-college-theme
 */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
