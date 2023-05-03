@@ -3,10 +3,8 @@
   {% set searchLi = '@search-li' %}
 {% else %}
   {% set logo = 'logo.twig' %}
-  {% set searchLi = fn('get_theme_file_path', '/src/twig/components/search-li/search-li.twig') %}
+  {% set searchLi = 'search-li.twig' %}
 {% endif %}
-
-{{ searchLi }}
 
 <component
   is="header"
