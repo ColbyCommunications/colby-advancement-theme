@@ -80,6 +80,46 @@ class AdvancementSite extends Timber\Site {
 		parent::__construct();
 	}
 
+	public function my_acf_init() {
+
+		// check function exists
+		if ( function_exists( 'acf_register_block' ) ) {
+
+			// register a media context section
+			acf_register_block(
+				array(
+					'name'            => 'media-context-section',
+					'title'           => __( 'Media Context Section' ),
+					'description'     => __( 'Section dedicated to grouping media context components with a decorative background.' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'media', 'context', 'image' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a media aside
+			acf_register_block(
+				array(
+					'name'            => 'media-aside',
+					'title'           => __( 'Media Aside' ),
+					'description'     => __( 'Large image with small context component that features a carousel option.' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'media', 'context', 'image', 'aside', 'carousel' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+		}
+
 }
 
 new AdvancementSite();
