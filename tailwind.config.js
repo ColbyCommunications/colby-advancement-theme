@@ -1,5 +1,5 @@
 module.exports = {
-    content: ['./src/**/*.{twig,vue}'],
+    content: ['./src/**/*.{twig,vue}', '../colby-college-theme/src/**/*.{twig,vue}'],
     theme: {
         colors: {
             transparent: 'transparent',
