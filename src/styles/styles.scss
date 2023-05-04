@@ -5,11 +5,11 @@
 //
 // We also will likely remove all redundancies within tailwind.config.js
 
-// @import 'tailwindcss/base';
-// @import 'tailwindcss/components';
-// @import 'tailwindcss/utilities';
-// @import 'global/variables';
-// @import 'global/layout';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'global/variables';
+@import 'global/layout';
 
 // /* Body No Scroll */
 // .no-scroll {
