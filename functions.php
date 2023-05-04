@@ -128,12 +128,14 @@ new AdvancementSite();
  * Enqueue scripts and styles.
  */
 function advancement_theme_scripts() {
+	// remove parent
+	wp_dequeue_style( 'hvh' );
 
 	// child
-	wp_enqueue_style( 'child_css', get_stylesheet_directory_uri() . '/dist/styles/scripts.css', array( 'hvh' ), date( 'H:i:s' ) );
+	wp_enqueue_style( 'child_css', get_stylesheet_directory_uri() . '/dist/styles/scripts.css', array(), date( 'H:i:s' ) );
 	wp_enqueue_script( 'child_scripts', get_stylesheet_directory_uri() . '/dist/scripts.js', array(), date( 'H:i:s' ), true );
 }
-add_action( 'wp_enqueue_scripts', 'advancement_theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'advancement_theme_scripts', 100 );
 
 
 
