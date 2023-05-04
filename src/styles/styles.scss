@@ -1,293 +1,300 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import 'global/variables';
-@import 'global/layout';
+// Brandon, these are all redundant with the rendered styles being inherited
+// from the parent theme (colby.edu). We're going to test everything with
+// the styles commented out below. If things check out, then these will all
+// be deleted and we'll reserve this space for edge cases.
+//
+// We also will likely remove all redundancies within tailwind.config.js
 
-/* Body No Scroll */
-.no-scroll {
-    overflow: hidden;
-    height: 100vh;
-}
+// @import 'tailwindcss/base';
+// @import 'tailwindcss/components';
+// @import 'tailwindcss/utilities';
+// @import 'global/variables';
+// @import 'global/layout';
 
-/* Page w/ sidebar content styles */
-.wysiwyg {
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        @apply font-extended;
-        @apply font-normal;
-    }
+// /* Body No Scroll */
+// .no-scroll {
+//     overflow: hidden;
+//     height: 100vh;
+// }
 
-    h2 {
-        @apply text-24;
-        @apply leading-110;
-        @apply -tracking-3;
-    }
+// /* Page w/ sidebar content styles */
+// .wysiwyg {
+//     h2,
+//     h3,
+//     h4,
+//     h5,
+//     h6 {
+//         @apply font-extended;
+//         @apply font-normal;
+//     }
 
-    h3 {
-        @apply text-20;
-        @apply leading-110;
-        @apply -tracking-3;
-        @apply text-indigo;
-    }
+//     h2 {
+//         @apply text-24;
+//         @apply leading-110;
+//         @apply -tracking-3;
+//     }
 
-    h4 {
-        @apply text-16;
-        @apply leading-110;
-        @apply -tracking-3;
-        @apply text-indigo;
-    }
+//     h3 {
+//         @apply text-20;
+//         @apply leading-110;
+//         @apply -tracking-3;
+//         @apply text-indigo;
+//     }
 
-    h5 {
-        @apply text-14;
-        @apply font-bold;
-        @apply leading-130;
-        @apply -tracking-8;
-        @apply text-azure;
-        @apply uppercase;
-    }
+//     h4 {
+//         @apply text-16;
+//         @apply leading-110;
+//         @apply -tracking-3;
+//         @apply text-indigo;
+//     }
 
-    h6 {
-        @apply text-12;
-        @apply leading-110;
-        @apply -tracking-8;
-        @apply text-azure;
-        @apply uppercase;
-    }
+//     h5 {
+//         @apply text-14;
+//         @apply font-bold;
+//         @apply leading-130;
+//         @apply -tracking-8;
+//         @apply text-azure;
+//         @apply uppercase;
+//     }
 
-    .wp-block-paragraph {
-        @apply mb-0;
-        > p {
-            @apply text-indigo-900;
-            @apply mb-4;
-            @apply font-body;
-        }
-    }
+//     h6 {
+//         @apply text-12;
+//         @apply leading-110;
+//         @apply -tracking-8;
+//         @apply text-azure;
+//         @apply uppercase;
+//     }
 
-    a {
-        @apply underline;
-        @apply hover:no-underline;
-        @apply hover:text-indigo;
-    }
+//     .wp-block-paragraph {
+//         @apply mb-0;
+//         > p {
+//             @apply text-indigo-900;
+//             @apply mb-4;
+//             @apply font-body;
+//         }
+//     }
 
-    ul:not(.pagination__container):not(.directiory_information) {
-        @apply list-disc;
-        @apply pl-10;
-        @apply text-indigo;
-        @apply mb-4;
+//     a {
+//         @apply underline;
+//         @apply hover:no-underline;
+//         @apply hover:text-indigo;
+//     }
 
-        li {
-            @apply text-indigo-900;
-            @apply mt-2;
-            @apply font-body;
-        }
-    }
+//     ul:not(.pagination__container):not(.directiory_information) {
+//         @apply list-disc;
+//         @apply pl-10;
+//         @apply text-indigo;
+//         @apply mb-4;
 
-    ol {
-        @apply list-decimal;
-        @apply pl-10;
-        @apply text-indigo;
-        @apply mb-4;
+//         li {
+//             @apply text-indigo-900;
+//             @apply mt-2;
+//             @apply font-body;
+//         }
+//     }
 
-        li {
-            @apply text-indigo-900;
-            @apply mt-2;
-            @apply font-body;
-        }
-    }
+//     ol {
+//         @apply list-decimal;
+//         @apply pl-10;
+//         @apply text-indigo;
+//         @apply mb-4;
 
-    ul:not(.pagination__container):not(.directiory_information),
-    ol {
-        ul {
-            @apply list-circle;
-        }
+//         li {
+//             @apply text-indigo-900;
+//             @apply mt-2;
+//             @apply font-body;
+//         }
+//     }
 
-        ul,
-        ol {
-            ul {
-                @apply list-square;
-            }
-        }
-    }
+//     ul:not(.pagination__container):not(.directiory_information),
+//     ol {
+//         ul {
+//             @apply list-circle;
+//         }
 
-    > div {
-        @apply clear-both;
-        @apply mb-20;
-    }
+//         ul,
+//         ol {
+//             ul {
+//                 @apply list-square;
+//             }
+//         }
+//     }
 
-    > div:last-child {
-        @apply mb-0;
-    }
+//     > div {
+//         @apply clear-both;
+//         @apply mb-20;
+//     }
 
-    .wp-block-heading {
-        margin-bottom: 0.8rem;
-    }
+//     > div:last-child {
+//         @apply mb-0;
+//     }
 
-    .colby-table-block {
-        td {
-            a {
-                @apply no-underline;
-            }
-            a:hover {
-                @apply underline;
-            }
-        }
-    }
+//     .wp-block-heading {
+//         margin-bottom: 0.8rem;
+//     }
 
-    .colby-paragraph-block {
-        @apply mb-20;
-        @apply font-body;
+//     .colby-table-block {
+//         td {
+//             a {
+//                 @apply no-underline;
+//             }
+//             a:hover {
+//                 @apply underline;
+//             }
+//         }
+//     }
 
-        > p {
-            @apply text-indigo-900;
-        }
+//     .colby-paragraph-block {
+//         @apply mb-20;
+//         @apply font-body;
 
-        > p,
-        > table,
-        hr {
-            @apply mb-4;
-        }
+//         > p {
+//             @apply text-indigo-900;
+//         }
 
-        &:last-child {
-            @apply mb-0;
-        }
+//         > p,
+//         > table,
+//         hr {
+//             @apply mb-4;
+//         }
 
-        p:last-child,
-        ul:last-child,
-        ol:last-child {
-            @apply mb-0;
-        }
+//         &:last-child {
+//             @apply mb-0;
+//         }
 
-        table,
-        tr,
-        td {
-            border: 1px solid #ccc;
-        }
-    }
+//         p:last-child,
+//         ul:last-child,
+//         ol:last-child {
+//             @apply mb-0;
+//         }
 
-    .colby-image-text-block {
-        p {
-            @apply mb-4;
-            @apply text-indigo-900;
-            @apply font-body;
-        }
-    }
+//         table,
+//         tr,
+//         td {
+//             border: 1px solid #ccc;
+//         }
+//     }
 
-    .colby-accordion-block {
-        p {
-            @apply mb-4;
-            @apply text-indigo-900;
-        }
+//     .colby-image-text-block {
+//         p {
+//             @apply mb-4;
+//             @apply text-indigo-900;
+//             @apply font-body;
+//         }
+//     }
 
-        p,
-        ul,
-        ol {
-            @apply font-normal;
-            @apply font-body;
-            @apply text-16;
-            @apply leading-140;
-        }
-    }
+//     .colby-accordion-block {
+//         p {
+//             @apply mb-4;
+//             @apply text-indigo-900;
+//         }
 
-    .wp-block-heading {
-        > h2 {
-            @apply text-indigo;
-        }
-    }
+//         p,
+//         ul,
+//         ol {
+//             @apply font-normal;
+//             @apply font-body;
+//             @apply text-16;
+//             @apply leading-140;
+//         }
+//     }
 
-    .wp-block-embed {
-        .wp-element-caption {
-            @apply font-body;
-            @apply text-indigo-900;
-            @apply font-normal;
-        }
-    }
-}
+//     .wp-block-heading {
+//         > h2 {
+//             @apply text-indigo;
+//         }
+//     }
 
-/* Directory profile page */
-.directory-person-main {
-    .colby-table-block {
-        margin-top: 0.5rem !important;
-    }
-}
+//     .wp-block-embed {
+//         .wp-element-caption {
+//             @apply font-body;
+//             @apply text-indigo-900;
+//             @apply font-normal;
+//         }
+//     }
+// }
 
-.list-section__list {
-    li {
-        list-style-type: none;
-        position: relative; /* It's needed for setting position to absolute in the next rule. */
-    }
+// /* Directory profile page */
+// .directory-person-main {
+//     .colby-table-block {
+//         margin-top: 0.5rem !important;
+//     }
+// }
 
-    li::before {
-        content: '•';
-        position: absolute;
-        left: -0.7em; /* Adjust this value so that it appears where you want. */
-        font-size: 1.5em; /* Adjust this value so that it appears what size you want. */
-        @apply text-indigo-600;
-    }
-}
+// .list-section__list {
+//     li {
+//         list-style-type: none;
+//         position: relative; /* It's needed for setting position to absolute in the next rule. */
+//     }
 
-/* Directory Gravity Form */
-.gform_wrapper {
-    input:not([type='file']):not([type='submit']) {
-        border: 1px solid #b7c2d5;
-        border-radius: 3px;
-    }
-    textarea {
-        border: 1px solid #b7c2d5;
-        border-radius: 3px;
-    }
-    select {
-        border: 1px solid #b7c2d5;
-        border-radius: 3px;
-        padding: 5px;
-    }
-    input[type='submit'] {
-        background-color: #002878;
-        border: 2px solid #002878;
-        color: #fff;
-        padding: 5px 12px;
-        cursor: pointer;
-        border-radius: 4px;
-    }
-    input[type='submit']:hover {
-        background-color: #fff;
-        border: 2px solid #002878;
-        color: #003878;
-        padding: 5px 12px;
-        cursor: pointer;
-        border-radius: 4px;
-        text-decoration: underline;
-    }
-    input[type='submit']:focus {
-        background-color: #fff;
-        border: 2px solid #002878;
-        color: #003878;
-        padding: 5px 12px;
-        cursor: pointer;
-        border-radius: 4px;
-        text-decoration: underline;
-    }
-    .remove-field {
-        margin-bottom: 2rem;
-        label {
-            margin-left: 0.5rem;
-        }
-    }
+//     li::before {
+//         content: '•';
+//         position: absolute;
+//         left: -0.7em; /* Adjust this value so that it appears where you want. */
+//         font-size: 1.5em; /* Adjust this value so that it appears what size you want. */
+//         @apply text-indigo-600;
+//     }
+// }
 
-    .gchoice {
-        label {
-            margin-left: 0.5rem;
-        }
-    }
-}
+// /* Directory Gravity Form */
+// .gform_wrapper {
+//     input:not([type='file']):not([type='submit']) {
+//         border: 1px solid #b7c2d5;
+//         border-radius: 3px;
+//     }
+//     textarea {
+//         border: 1px solid #b7c2d5;
+//         border-radius: 3px;
+//     }
+//     select {
+//         border: 1px solid #b7c2d5;
+//         border-radius: 3px;
+//         padding: 5px;
+//     }
+//     input[type='submit'] {
+//         background-color: #002878;
+//         border: 2px solid #002878;
+//         color: #fff;
+//         padding: 5px 12px;
+//         cursor: pointer;
+//         border-radius: 4px;
+//     }
+//     input[type='submit']:hover {
+//         background-color: #fff;
+//         border: 2px solid #002878;
+//         color: #003878;
+//         padding: 5px 12px;
+//         cursor: pointer;
+//         border-radius: 4px;
+//         text-decoration: underline;
+//     }
+//     input[type='submit']:focus {
+//         background-color: #fff;
+//         border: 2px solid #002878;
+//         color: #003878;
+//         padding: 5px 12px;
+//         cursor: pointer;
+//         border-radius: 4px;
+//         text-decoration: underline;
+//     }
+//     .remove-field {
+//         margin-bottom: 2rem;
+//         label {
+//             margin-left: 0.5rem;
+//         }
+//     }
 
-@media (max-width: 768px) {
-    .colby-image-text-block {
-        > div > div {
-            flex-basis: auto !important;
-        }
-    }
-}
+//     .gchoice {
+//         label {
+//             margin-left: 0.5rem;
+//         }
+//     }
+// }
+
+// @media (max-width: 768px) {
+//     .colby-image-text-block {
+//         > div > div {
+//             flex-basis: auto !important;
+//         }
+//     }
+// }
