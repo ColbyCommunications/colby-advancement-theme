@@ -77,6 +77,7 @@ class AdvancementSite extends Timber\Site {
 	 * Add timber support.
 	 */
 	public function __construct() {
+		add_action( 'acf/init', array( $this, 'my_acf_init' ) );
 		parent::__construct();
 	}
 
@@ -90,11 +91,11 @@ class AdvancementSite extends Timber\Site {
 				array(
 					'name'            => 'media-context-section',
 					'title'           => __( 'Media Context Section' ),
-					'description'     => __( 'Section dedicated to grouping media context components with a decorative background.' ),
+					'description'     => __( 'Section component dedicated to grouping media context with a decorative background' ),
 					'render_callback' => 'my_acf_block_render_callback',
 					'category'        => 'layout',
 					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
-					'keywords'        => array( 'media', 'context', 'image' ),
+					'keywords'        => array( 'media', 'context', 'section' ),
 					'mode'            => 'edit',
 					'supports'        => array(
 						'align' => false,
@@ -107,11 +108,130 @@ class AdvancementSite extends Timber\Site {
 				array(
 					'name'            => 'media-aside',
 					'title'           => __( 'Media Aside' ),
-					'description'     => __( 'Large image with small context component that features a carousel option.' ),
+					'description'     => __( 'Large image with small context. Supports carousel functionality.' ),
 					'render_callback' => 'my_acf_block_render_callback',
 					'category'        => 'layout',
 					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
-					'keywords'        => array( 'media', 'context', 'image', 'aside', 'carousel' ),
+					'keywords'        => array( 'media', 'context', 'aside', 'carousel' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a inset widget
+			acf_register_block(
+				array(
+					'name'            => 'inset-widget',
+					'title'           => __( 'Inset Widget' ),
+					'description'     => __( 'Decorative interstitial block' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'widget', 'inset', 'context' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a collage section
+			acf_register_block(
+				array(
+					'name'            => 'collage-section',
+					'title'           => __( 'Collage Section' ),
+					'description'     => __( 'Decorative section with curated image group and context' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'collage', 'context', 'media', 'section', 'image' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a related section
+			acf_register_block(
+				array(
+					'name'            => 'related-section',
+					'title'           => __( 'Related Section' ),
+					'description'     => __( 'Component typically found at the bottom of post style pages.' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'media', 'context', 'section', 'related' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a full bleed image
+			acf_register_block(
+				array(
+					'name'            => 'full-bleed-hero',
+					'title'           => __( 'Full Bleed Hero' ),
+					'description'     => __( 'Hero with inset image, context, and full width background image' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'hero', 'media', 'image', 'context', 'background' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a icon section
+			acf_register_block(
+				array(
+					'name'            => 'icon-section',
+					'title'           => __( 'Icon Section' ),
+					'description'     => __( 'Section dedicated to grouping svg assets or transparent pngs.' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'icon', 'context', 'section' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a list block grid
+			acf_register_block(
+				array(
+					'name'            => 'list-block-grid',
+					'title'           => __( 'List Block Grid' ),
+					'description'     => __( 'Dedicated grid for list blocks' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'list', 'block', 'grid' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a bg inset media context
+			acf_register_block(
+				array(
+					'name'            => 'bg-inset-media-context',
+					'title'           => __( 'Background Inset Media Context' ),
+					'description'     => __( 'Container componen for the media context supporting background textures.' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'media', 'context', 'background', 'inset' ),
 					'mode'            => 'edit',
 					'supports'        => array(
 						'align' => false,
