@@ -119,7 +119,7 @@ class AdvancementSite extends Timber\Site {
 				)
 			);
 		}
-
+	}
 }
 
 new AdvancementSite();
