@@ -6,7 +6,7 @@
 
 <div class="media-context-section relative py-24">
   <div class="media-context-section__inner md:grid md:grid-cols-12 gap-x-10 max-w-screen-2xl w-full px-5 my-0 mx-auto">
-    <div class="media-context-section__main {% if type == 'narrow' %}md:col-span-10 md:col-start-2{% else %}md:col-span-12{% endif %} space-y-16 [&>div]:mt-0">
+    <div class="media-context-section__main {% if type == 'narrow' %}md:col-span-10 md:col-start-2{% else %}md:col-span-12{% endif %} space-y-16">
       {% for item in items %}
         {% include mediaContext with item %}
       {% endfor %}
