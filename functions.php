@@ -227,11 +227,28 @@ class AdvancementSite extends Timber\Site {
 				array(
 					'name'            => 'bg-inset-media-context',
 					'title'           => __( 'Background Inset Media Context' ),
-					'description'     => __( 'Container componen for the media context supporting background textures.' ),
+					'description'     => __( 'Container component for the media context supporting background textures.' ),
 					'render_callback' => 'my_acf_block_render_callback',
 					'category'        => 'layout',
 					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
 					'keywords'        => array( 'media', 'context', 'background', 'inset' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a home section
+			acf_register_block(
+				array(
+					'name'            => 'home-section',
+					'title'           => __( 'Home Section' ),
+					'description'     => __( 'Advancement site exclusive block for rendering latest events and alumni news from the Colby News site' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'home', 'context', 'section', 'news', 'events' ),
 					'mode'            => 'edit',
 					'supports'        => array(
 						'align' => false,
