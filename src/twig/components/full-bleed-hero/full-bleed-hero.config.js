@@ -2,6 +2,7 @@ module.exports = {
   title: "Full Bleed Hero",
   status: "wip",
   context: {
+    type: 'dark',
     subheading: 'Alumni',
     heading: 'Once students, forever alumni.',
     paragraph: "Join our alumni network to connect with fellow graduates, mentor students, and expand your professional network.",
@@ -22,7 +23,7 @@ module.exports = {
     {
       name: 'Light',
       context: {
-        type: 'dark',
+        type: 'light',
         subheading: 'Alumni Awards',
         heading: 'Recognizing outstanding alumni.',
         paragraph: 'See past winners and nominate someone deserving.',

@@ -6,14 +6,12 @@
   {% set context = 'context.twig' %}
 {% endif %}
 
-{# {% set type = type ? 'dark' : 'light' %} #}
-
-<div class="full-bleed-hero py-24 relative {% if type != 'dark' %} bg-bluemarble__pattern {% endif %} bg-cover bg-center">
+<div class="full-bleed-hero py-24 relative {% if type == 'dark' %} bg-bluemarble__pattern {% endif %} bg-cover bg-center">
   <div class="full-bleed-hero__inner grid md:grid-cols-12 gap-x-10 max-w-screen-2xl w-full px-5 my-0 mx-auto">
     <div class="full-bleed-hero__context md:col-span-8 md:col-start-3">
       {% include context with {
         size: 'large',
-        type: type ? 'dark' : 'light',
+        type: type == 'dark' ? 'light' : 'dark',
         subheading: subheading,
         heading: heading,
         paragraph: paragraph,
@@ -29,8 +27,8 @@
           'absolute w-full h-full object-cover',
           image.srcset,
           image.src,
-          image.image.sizes.Rectangle,
-          image.image.sizes.Rectangle,
+          image.sizes.Rectangle,
+          image.sizes.Rectangle,
           image.alt,
           in_component_library
         ) }}
