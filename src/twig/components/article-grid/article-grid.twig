@@ -6,7 +6,7 @@
   {% set newItems = [] %}
   {% set newImage = {} %}
 
-  {# {% if render_posts %}
+  {% if render_posts %}
     {% set items = fn('Timber::get_posts', {
       post_type: 'post',
       post_per_page: 6,
@@ -20,7 +20,7 @@
     })|map(i => {
       post: i,
     }) %}
-  {% endif %} #}
+  {% endif %}
 
   {% if items_retain != true %}
 
