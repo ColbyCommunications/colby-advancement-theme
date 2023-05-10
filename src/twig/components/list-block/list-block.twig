@@ -4,8 +4,9 @@
   {% set context = 'context.twig' %}
 {% endif %}
 
-<div class="list-block py-6 px-8 {% if type == 'dark' %} bg-gray-100 {% else %} bg-white {% endif %} border border-solid border-azure rounded-md [&_h2]:mt-0">
+<div class="list-block py-6 px-8 {% if type == 'dark' %} bg-gray-100 {% else %} bg-white {% endif %} border border-solid border-azure rounded-md">
   {% include context with {
+    type: 'dark',
     size: 'xsmall',
     subheading: subheading,
     heading: heading,

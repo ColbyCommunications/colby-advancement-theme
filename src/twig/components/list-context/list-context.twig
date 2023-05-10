@@ -6,7 +6,7 @@
 
 {% set static = size == 'small' ? true : false %}
 
-<div class="list-context">
+<div class="list-context md:h-full">
   <div class="list-context__inner md:grid grid-cols-12 gap-10 max-w-screen-2xl w-full space-y-8 md:space-y-0">
     <div class="list-context__context {% if columns == 2 %}md:col-span-4{% else %}md:col-span-5{% endif %}">
       {% include context with {
