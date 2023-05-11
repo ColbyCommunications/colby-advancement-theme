@@ -1,0 +1,48 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+  {% set template_subheading = post.date|date("M d, Y") %}
+  {% set template_heading = post.title %}
+  {% set template_paragraph = fn('has_excerpt') ? fn('get_the_excerpt') : null %}
+
+	<div class="post">
+    {% include 'full-bleed-hero.twig' with {
+      type: 'light',
+      subheading: template_subheading,
+      heading: template_heading,
+      paragraph: template_paragraph,
+      image: {
+        size: {
+          Hero: post.thumbnail.src('Hero'),
+          Rectangle: post.thumbnail.src('Rectangle')
+        },
+        alt: post.thumbnail.alt,
+        caption: post.thumbnail.caption
+      }
+    } %}
+    <div
+      class="post__inner grid md:grid-cols-12 gap-x-10 max-w-screen-2xl w-full px-5 my-0 mx-auto
+      md:[&>.wysiwyg>.colby-paragraph-block]:col-span-8 md:[&>.wysiwyg>.colby-paragraph-block]:col-start-3
+      md:[&>.wysiwyg>.wp-block-heading]:col-span-8 md:[&>.wysiwyg>.wp-block-heading]:col-start-3
+      md:[&.wysiwyg>.image-grid]:col-span-10 md:[&.wysiwyg>.image-grid]:col-start2
+      md:[&.wysiwyg>.block-quote]:col-span-10 md:[&.wysiwyg>.block-quote]:col-start2"
+    >
+      {% include 'wysiwyg.twig' with {
+        post: { content: post.content },
+      } %}
+    </div>
+    {% include 'inset-widget.twig' with {
+      size: 'medium',
+      subheading: 'Submit a story',
+      heading: 'Lorem ipsum dolor sit amet consectuer.',
+      paragraph: 'Lorem ipsum dolor sit amet, consectetur adipi elit. Nunc lobortis ullamcorper.',
+      buttons: [
+        {
+          url: 'https://welcometruth.com/',
+          title: 'Submit a Story',
+        },
+      ]
+    } %}
+	</div>
+{% endblock %}
