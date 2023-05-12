@@ -1,0 +1,40 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="page__main
+	[&>div+div]:mt-20 md:[&>div+div]:mt-[100px]
+	[&>.article-grid]:px-5
+	[&>.overlay-wide-image]:px-5
+	[&>.media-aside]:px-5
+	[&>.media-context]:px-5
+	[&>.list-context]:px-5
+	[&>.image-grid]:px-5
+  [&>.pagination]:px-5">
+
+    {% set mappedPosts = posts|map(p => {
+      post: p,
+    }) %}
+
+    {% include 'context-section.twig' with {
+      size: 'large',
+      subheading: title,
+      heading: 'Lorem ipsum dolor sit amet consectuer.',
+      paragraph: 'Lorem ipsum dolor sit amet, consectetur adipi elit. Nunc lobortis ullamcorper',
+      align: 'center',
+    } %}
+    {% include 'article-grid.twig' with {
+      render_posts: false,
+      render_api: false,
+      columns: 3,
+      image_orientation: 'rectangle',
+      items: mappedPosts,
+    } %}
+    {# Section Nav #}
+    {% include 'pagination.twig' with {
+      text: 'Showing ' ~ posts|length ~ ' of ' ~ fn( 'wp_count_posts' ).publish ~ ' results',
+      pages: posts.pagination.pages|map(p => p.link),
+      prev: posts.pagination.prev.link,
+      next: posts.pagination.next.link
+    } %}
+	</div>
+{% endblock %}

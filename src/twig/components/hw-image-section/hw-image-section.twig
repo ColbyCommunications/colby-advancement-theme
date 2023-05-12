@@ -6,7 +6,7 @@
   {% set context = 'context.twig' %}
 {% endif %}
 
-<div class="hw-image-section md:flex {% if type == 'light' %}bg-indigo{% else %}bg-indigo-100{% endif %} [&+.hw-image-section]:mt-0">
+<div class="hw-image-section full-bleed md:flex {% if type == 'light' %}bg-indigo{% else %}bg-indigo-100{% endif %} [&+.hw-image-section]:mt-0">
   <div class="hw-image-section__image relative md:w-1/2">
     {{ macros.picture(
       'w-full min-h-full object-cover',

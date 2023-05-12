@@ -77,8 +77,38 @@ class AdvancementSite extends Timber\Site {
 	 * Add timber support.
 	 */
 	public function __construct() {
+		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'acf/init', array( $this, 'my_acf_init' ) );
 		parent::__construct();
+	}
+
+	/**
+	 * This is where you can register custom post types.
+	 */
+	public function register_post_types() {
+		register_post_type(
+			'events',
+			array(
+				'labels'            => array(
+					'name'               => __( 'Events' ),
+					'singular_name'      => __( 'Event' ),
+					'add_new_item'       => __( 'Add Event' ),
+					'edit_item'          => __( 'Edit Event' ),
+					'new_item'           => __( 'New Event' ),
+					'view_item'          => __( 'View Event' ),
+					'search_items'       => __( 'Search Event' ),
+					'not_found'          => __( 'Event not found.' ),
+					'not_found_in_trash' => __( 'No Event found in trash.' ),
+				),
+				'rewrite'           => array( 'slug' => 'events/event-calendar' ),
+				'public'            => true,
+				'has_archive'       => true,
+				'menu_icon'         => 'dashicons-id-alt',
+				'show_in_nav_menus' => true,
+				'show_in_rest'      => true,
+				'supports'          => array( 'title', 'editor', 'revisions', 'excerpt', 'thumbnail' ),
+			)
+		);
 	}
 
 	public function my_acf_init() {
