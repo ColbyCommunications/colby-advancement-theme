@@ -218,23 +218,6 @@ class AdvancementSite extends Timber\Site {
 				)
 			);
 
-			// register a list block
-			acf_register_block(
-				array(
-					'name'            => 'list-block',
-					'title'           => __( 'List Block' ),
-					'description'     => __( 'Stylized block with context, typically deployed in lists or grids.' ),
-					'render_callback' => 'my_acf_block_render_callback',
-					'category'        => 'layout',
-					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
-					'keywords'        => array( 'list', 'block', 'context' ),
-					'mode'            => 'edit',
-					'supports'        => array(
-						'align' => false,
-					),
-				)
-			);
-
 			// register a list block grid
 			acf_register_block(
 				array(

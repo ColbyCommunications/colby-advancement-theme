@@ -22,6 +22,9 @@
       paragraph: 'Lorem ipsum dolor sit amet, consectetur adipi elit. Nunc lobortis ullamcorper',
       align: 'center',
     } %}
+    {% include 'section-nav.twig' with {
+      menu: 'Events Menu',
+    } %}
     {% include 'article-grid.twig' with {
       render_posts: false,
       render_api: false,
@@ -29,7 +32,6 @@
       image_orientation: 'rectangle',
       items: mappedPosts,
     } %}
-    {# Section Nav #}
     {% include 'pagination.twig' with {
       text: 'Showing ' ~ posts|length ~ ' of ' ~ fn( 'wp_count_posts' ).publish ~ ' results',
       pages: posts.pagination.pages|map(p => p.link),

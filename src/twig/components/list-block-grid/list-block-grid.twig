@@ -1,7 +1,7 @@
 {% if in_component_library %}
   {% set listBlock = '@list-block' %}
 {% else %}
-  {% set listBlock = 'list-block.twig' %}
+  {% set listBlock = fn('get_theme_file_path', '/src/twig/components/list-block/list-block.twig') %}
 {% endif %}
 
 <div class="list-block-grid grid grid-cols-12 gap-10 max-w-screen-2xl w-full my-0 mx-auto">
