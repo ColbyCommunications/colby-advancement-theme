@@ -6,6 +6,13 @@
   {% set overlayWideImage = 'overlay-wide-image.twig' %}
 {% endif %}
 
+{% set mappedPosts = fn('Timber::get_posts', {
+  post_type: 'events',
+  post_per_page: 3,
+})|map(p => {
+  post: p,
+}) %}
+
 <div class="background-section relative py-24 bg-marble__pattern bg-cover">
   <div class="background-section___decor absolute top-[200px] left-0 bg-white w-1/2 lg:w-[700px] h-[700px]"></div>
   <div class="background-section___inner relative z-10 space-y-24">
@@ -17,11 +24,10 @@
       paragraph: news.paragraph,
     } %}
     {% include contextArticleGrid with {
-      render_api: true,
-      api: 'Alumni',
       subheading: events.subheading,
       heading: events.heading,
       paragraph: events.paragraph,
+      items: mappedPosts,
     } %}
     <div class="max-w-screen-2xl w-full px-5 mx-auto">
       {% include overlayWideImage with {
