@@ -13,7 +13,7 @@
       heading: template_heading,
       paragraph: template_paragraph,
       image: {
-        size: {
+        sizes: {
           Hero: fn( 'get_the_post_thumbnail_url', post.ID, 'Hero' ),
           Rectangle: fn( 'get_the_post_thumbnail_url', post.ID, 'Rectangle' )
         },
@@ -26,7 +26,7 @@
       md:[&>.wysiwyg>.colby-paragraph-block]:col-span-8 md:[&>.wysiwyg>.colby-paragraph-block]:col-start-3
       md:[&>.wysiwyg>.wp-block-heading]:col-span-8 md:[&>.wysiwyg>.wp-block-heading]:col-start-3
       md:[&>.wysiwyg>.image-grid]:col-span-10 md:[&>.wysiwyg>.image-grid]:col-start-2
-      md:[&>.wysiwyg>.block-quote]:col-span-10 md:[&>.wysiwyg>.block-quote]:col-start2"
+      md:[&>.wysiwyg>.block-quote]:col-span-10 md:[&>.wysiwyg>.block-quote]:col-start-2"
     >
       {% include 'wysiwyg.twig' with {
         post: { content: post.content },
