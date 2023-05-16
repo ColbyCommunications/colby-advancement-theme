@@ -5,9 +5,9 @@
 //
 // We also will likely remove all redundancies within tailwind.config.js
 
-// @import 'tailwindcss/base';
-// @import 'tailwindcss/components';
-// @import 'tailwindcss/utilities';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 @import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
 // @import 'global/variables';
 // @import 'global/layout';
