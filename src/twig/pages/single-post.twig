@@ -22,7 +22,7 @@
       }
     } %}
     <div
-      class="post__inner [&>.wysiwyg]:grid md:[&>.wysiwyg]:grid-cols-12 [&>.wysiwyg]:gap-x-10 [&>.wysiwyg]:max-w-screen-2xl [&>.wysiwyg]:w-full [&>.wysiwyg]:px-5 [&>.wysiwyg]:my-0 [&>.wysiwyg]:mx-auto
+      class="post__inner mb-20 [&>.wysiwyg]:grid md:[&>.wysiwyg]:grid-cols-12 [&>.wysiwyg]:gap-x-10 [&>.wysiwyg]:max-w-screen-2xl [&>.wysiwyg]:w-full [&>.wysiwyg]:px-5 [&>.wysiwyg]:my-0 [&>.wysiwyg]:mx-auto
       md:[&>.wysiwyg>.colby-paragraph-block]:col-span-8 md:[&>.wysiwyg>.colby-paragraph-block]:col-start-3
       md:[&>.wysiwyg>.wp-block-heading]:col-span-8 md:[&>.wysiwyg>.wp-block-heading]:col-start-3
       md:[&>.wysiwyg>.image-grid]:col-span-10 md:[&>.wysiwyg>.image-grid]:col-start-2
@@ -37,12 +37,14 @@
       subheading: 'Submit a story',
       heading: 'Lorem ipsum dolor sit amet consectuer.',
       paragraph: 'Lorem ipsum dolor sit amet, consectetur adipi elit. Nunc lobortis ullamcorper.',
-      buttons: [
-        {
-          url: 'https://welcometruth.com/',
-          title: 'Submit a Story',
-        },
-      ]
+      buttons: {
+        items: [
+          {
+            url: 'https://welcometruth.com/',
+            title: 'Submit a Story',
+          },
+        ]
+      }
     } %}
 	</div>
 {% endblock %}

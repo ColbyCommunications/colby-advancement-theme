@@ -65,7 +65,3 @@
         },
     };
 </script>
-
-<style lang="scss">
-    @import './_accordion.scss';
-</style>
