@@ -1,8 +1,12 @@
 {% if in_component_library %}
   {% set contextArticleGrid = '@context-article-grid' %}
+  {% set contextSection = '@context-section' %}
+  {% set articleGrid = '@article-grid' %}
   {% set overlayWideImage = '@overlay-wide-image' %}
 {% else %}
   {% set contextArticleGrid = 'context-article-grid.twig' %}
+  {% set contextSection = 'context-section.twig' %}
+  {% set articleGrid = 'article-grid.twig' %}
   {% set overlayWideImage = 'overlay-wide-image.twig' %}
 {% endif %}
 
@@ -13,8 +17,6 @@
   post: p,
 }) %}
 
-{{ mappedPosts|json_encode }}
-
 <div class="background-section relative py-24 bg-marble__pattern bg-cover">
   <div class="background-section___decor absolute top-[200px] left-0 bg-white w-1/2 lg:w-[700px] h-[700px]"></div>
   <div class="background-section___inner relative z-10 space-y-24">
@@ -24,14 +26,21 @@
       subheading: news.subheading,
       heading: news.heading,
       paragraph: news.paragraph,
+      buttons: news.buttons,
     } %}
-    {% include contextArticleGrid with {
-      render_api: false,
+    {% include contextSection with {
       subheading: events.subheading,
       heading: events.heading,
       paragraph: events.paragraph,
-      items: mappedPosts,
+      buttons: events.buttons,
     } %}
+    {% include articleGrid with {
+      render_posts: false,
+      render_api: false,
+      columns: 3,
+      image_orientation: 'rectangle',
+      items: mappedPosts,
+    }  %}
     <div class="max-w-screen-2xl w-full px-5 mx-auto">
       {% include overlayWideImage with {
         size: 'large',
