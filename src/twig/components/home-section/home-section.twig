@@ -29,18 +29,21 @@
       buttons: news.buttons,
     } %}
     {% include contextSection with {
+      size: 'medium',
       subheading: events.subheading,
       heading: events.heading,
       paragraph: events.paragraph,
       buttons: events.buttons,
     } %}
-    {% include articleGrid with {
-      render_posts: false,
-      render_api: false,
-      columns: 3,
-      image_orientation: 'rectangle',
-      items: mappedPosts,
-    }  %}
+    <div class="max-w-screen-2xl w-full px-5 mx-auto">
+      {% include articleGrid with {
+        render_posts: false,
+        render_api: false,
+        columns: 3,
+        image_orientation: 'rectangle',
+        items: mappedPosts,
+      }  %}
+    </div>
     <div class="max-w-screen-2xl w-full px-5 mx-auto">
       {% include overlayWideImage with {
         size: 'large',

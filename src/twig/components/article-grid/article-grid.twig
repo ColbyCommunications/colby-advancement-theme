@@ -109,7 +109,7 @@
           {% set subheading_text = null %}
         {% elseif item.post.post_type == 'events' %}
           {% set cta_title = 'View Event' %}
-          {% set paragraph_text = item.post.preview.length(20).read_more('') %}
+          {% set paragraph_text = item.post.preview ? item.post.preview.length(20).read_more('') : item.post.post_excerpt %}
           {% set subheading_text = item.post.meta('date') ? item.post.meta('date')|date("M d, Y") : null %}
         {% else %}
           {% set cta_title = 'Read More' %}
