@@ -95,3 +95,11 @@ p {
         opacity: 0;
     }
 }
+
+.full-bleed:last-child {
+    margin-bottom: -80px;
+
+    @include breakpoint(medium) {
+        margin-bottom: -100px;
+    }
+}

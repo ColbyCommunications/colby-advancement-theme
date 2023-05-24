@@ -103,7 +103,7 @@ class AdvancementSite extends Timber\Site {
 				'rewrite'           => array( 'slug' => 'events/event-calendar' ),
 				'public'            => true,
 				'has_archive'       => true,
-				'menu_icon'         => 'dashicons-id-alt',
+				'menu_icon'         => 'dashicons-calendar-alt',
 				'show_in_nav_menus' => true,
 				'show_in_rest'      => true,
 				'supports'          => array( 'title', 'editor', 'revisions', 'excerpt', 'thumbnail' ),
@@ -262,6 +262,23 @@ class AdvancementSite extends Timber\Site {
 					'category'        => 'layout',
 					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
 					'keywords'        => array( 'home', 'context', 'section', 'news', 'events' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
+
+			// register a intro context
+			acf_register_block(
+				array(
+					'name'            => 'intro-context',
+					'title'           => __( 'Intro Context' ),
+					'description'     => __( 'Two column context section component typically deployed as an alternative aesthetic for introductory context' ),
+					'render_callback' => 'my_acf_block_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'introductory', 'context', 'section' ),
 					'mode'            => 'edit',
 					'supports'        => array(
 						'align' => false,
