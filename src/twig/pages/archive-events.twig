@@ -33,6 +33,7 @@
       image_orientation: 'rectangle',
       items: mappedPosts,
     } %}
+    {{ fn( 'wp_count_posts' )|json_encode }}
     {% include 'pagination.twig' with {
       text: 'Showing ' ~ posts|length ~ ' of ' ~ fn( 'wp_count_posts' ).publish ~ ' results',
       pages: posts.pagination.pages|map(p => p.link),
