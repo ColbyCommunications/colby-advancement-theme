@@ -12,7 +12,7 @@
 
 {% set mappedPosts = fn('Timber::get_posts', {
   post_type: 'events',
-  post_per_page: 3,
+  posts_per_page: 3,
 })|map(p => {
   post: p,
 }) %}
