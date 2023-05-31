@@ -10,7 +10,7 @@
 @import 'tailwindcss/utilities';
 @import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
 // @import 'global/variables';
-// @import 'global/layout';
+@import 'global/layout';
 
 /* Body No Scroll */
 .no-scroll {
@@ -354,3 +354,8 @@
     }
   }
   
+  .intro-context {
+    p + p {
+        @apply mt-4;
+    }
+  }

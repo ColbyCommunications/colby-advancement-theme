@@ -10,12 +10,18 @@
   {% set overlayWideImage = 'overlay-wide-image.twig' %}
 {% endif %}
 
-{% set mappedPosts = fn('Timber::get_posts', {
-  post_type: 'events',
-  posts_per_page: 3,
-})|map(p => {
-  post: p,
-}) %}
+{% if type == 'Recent Events' %}
+  {% set mappedPosts = fn('Timber::get_posts', {
+    post_type: 'events',
+    posts_per_page: 3,
+  })|map(p => {
+    post: p,
+  }) %}
+{% else %}
+  {% set mappedPosts = items %}
+{% endif %}
+
+{{ mappedPosts|json_encode }}
 
 <div class="background-section relative py-24 bg-marble__pattern bg-cover full-bleed">
   <div class="background-section___decor absolute top-[200px] left-0 bg-white w-1/2 lg:w-[700px] h-[700px]"></div>
