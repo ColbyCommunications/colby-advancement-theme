@@ -18,7 +18,7 @@
     post: p,
   }) %}
 {% else %}
-  {% set mappedPosts = items %}
+  {% set mappedPosts = events.items %}
 {% endif %}
 
 {{ mappedPosts|json_encode }}
