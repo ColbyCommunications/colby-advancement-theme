@@ -109,6 +109,59 @@ class AdvancementSite extends Timber\Site {
 				'supports'          => array( 'title', 'editor', 'revisions', 'excerpt', 'thumbnail' ),
 			)
 		);
+
+		register_post_type(
+			'subevents',
+			array(
+				'labels'            => array(
+					'name'               => __( 'Subevents' ),
+					'singular_name'      => __( 'Subevent' ),
+					'add_new_item'       => __( 'Add Subevent' ),
+					'edit_item'          => __( 'Edit Subevent' ),
+					'new_item'           => __( 'New Subevent' ),
+					'view_item'          => __( 'View Subevent' ),
+					'search_items'       => __( 'Search Subevent' ),
+					'not_found'          => __( 'Subevent not found.' ),
+					'not_found_in_trash' => __( 'No Subevent found in trash.' ),
+				),
+				'has_archive'       => false,
+				'menu_icon'         => 'dashicons-calendar',
+				'show_in_nav_menus' => true,
+				'show_in_rest'      => true,
+				'supports'          => array( 'title', 'editor', 'revisions', 'excerpt', 'thumbnail' ),
+			)
+		);
+	}
+
+	/**
+	 * This is where you can register custom taxonomies.
+	 */
+	public function register_taxonomies() {
+		register_taxonomy(
+			'groupings',
+			'subevents',
+			array(
+				'hierarchical'      => true,
+				'show_ui'           => true,
+				'show_in_rest'      => true,
+				'show_admin_column' => true,
+				'query_var'         => true,
+				'public'            => true,
+				'show_tagcloud'     => false,
+				'capabilities'      => array(
+					'manage_terms' => 'manage_options',
+					'edit_terms'   => 'manage_options',
+					'delete_terms' => 'manage_options',
+					'assign_terms' => 'manage_options',
+				),
+				'labels'            => array(
+					'name'          => __( 'Groupings' ),
+					'singular_name' => __( 'Grouping' ),
+					'add_new_item'  => __( 'Add New Grouping' ),
+					'menu_name'     => __( 'Groupings' ),
+				),
+			)
+		);
 	}
 
 	public function my_acf_init() {
