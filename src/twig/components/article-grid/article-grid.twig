@@ -20,6 +20,20 @@
     })|map(i => {
       post: i,
     }) %}
+  {% elseif render_subevents %}
+    {% set items = fn('Timber::get_posts', {
+      post_type: 'subevents',
+      post_per_page: 6,
+      tax_query: [
+        {
+          taxonomy: 'groupings',
+          field: 'term_id',
+          terms: render_subevents_grouping
+        }
+      ]
+    })|map(i => {
+      post: i,
+    }) %}
   {% endif %}
 
   {% if items_retain != true %}
@@ -107,7 +121,7 @@
           {% set cta_title = 'Read Bio' %}
           {% set paragraph_text = item.post.title %}
           {% set subheading_text = null %}
-        {% elseif item.post.post_type == 'events' %}
+        {% elseif (item.post.post_type == 'events') or (item.post.post_type == 'subevents') %}
           {% set cta_title = 'View Event' %}
           {% set paragraph_text = item.post.preview ? item.post.preview.length(20).read_more('') : item.post.post_excerpt %}
           {% set subheading_text = item.post.meta('event_date') ? item.post.meta('event_date') : item.post.event_date|date('F j, Y | g:i a') %}

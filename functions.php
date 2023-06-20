@@ -124,6 +124,7 @@ class AdvancementSite extends Timber\Site {
 					'not_found'          => __( 'Subevent not found.' ),
 					'not_found_in_trash' => __( 'No Subevent found in trash.' ),
 				),
+				'public'            => true,
 				'has_archive'       => false,
 				'menu_icon'         => 'dashicons-calendar',
 				'show_in_nav_menus' => true,
