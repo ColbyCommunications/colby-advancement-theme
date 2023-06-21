@@ -24,6 +24,9 @@
     {% set items = fn('Timber::get_posts', {
       post_type: 'subevents',
       post_per_page: 6,
+      meta_key: 'event_date',
+      orderby: 'meta_value_num',
+      order: 'ASC',
       tax_query: [
         {
           taxonomy: 'groupings',
