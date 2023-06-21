@@ -78,6 +78,7 @@ class AdvancementSite extends Timber\Site {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_types' ) );
+		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'acf/init', array( $this, 'my_acf_init' ) );
 		parent::__construct();
 	}
