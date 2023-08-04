@@ -35,19 +35,21 @@
         post: { content: post.content },
       } %}
     </div>
-    {% include fn('get_theme_file_path', '/src/twig/components/inset-widget/inset-widget.twig') with {
-      size: 'medium',
-      subheading: 'Submit a story',
-      heading: 'Lorem ipsum dolor sit amet consectuer.',
-      paragraph: 'Lorem ipsum dolor sit amet, consectetur adipi elit. Nunc lobortis ullamcorper.',
-      buttons: [
-        {
-          button: {
-            url: 'https://welcometruth.com/',
-            title: 'Submit a Story',
+    {% if not post.type.name == 'events' %}
+      {% include fn('get_theme_file_path', '/src/twig/components/inset-widget/inset-widget.twig') with {
+        size: 'medium',
+        subheading: 'Submit a story',
+        heading: 'Lorem ipsum dolor sit amet consectuer.',
+        paragraph: 'Lorem ipsum dolor sit amet, consectetur adipi elit. Nunc lobortis ullamcorper.',
+        buttons: [
+          {
+            button: {
+              url: 'https://welcometruth.com/',
+              title: 'Submit a Story',
+            }
           }
-        }
-      ]
-    } %}
+        ]
+      } %}
+    {% endif %}
 	</div>
 {% endblock %}
