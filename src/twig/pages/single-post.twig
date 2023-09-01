@@ -7,9 +7,15 @@
   {% set template_paragraph = fn('has_excerpt') ? fn('get_the_excerpt') : null %}
 
 	<div class="post">
-    {% include 'section-nav.twig' with {
-      menu: 'Events Menu'
-    } %}
+    {% if post.type.name == 'events' %}
+      {% include 'section-nav.twig' with {
+        menu: 'Events Menu'
+      } %}
+    {% else %}
+      {% include 'section-nav.twig' with {
+        menu: 'Colby Impact Menu'
+      } %}
+    {% endif %}
     {% include fn('get_theme_file_path', '/src/twig/components/full-bleed-hero/full-bleed-hero.twig') with {
       type: 'light',
       subheading: template_subheading,
