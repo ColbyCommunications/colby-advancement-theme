@@ -1,34 +1,38 @@
-// import { createApp } from 'vue/dist/vue.esm-bundler';
-// import mitt from 'mitt';
-
-// import Header from './twig/components/header/Header.vue';
-// import Modal from './twig/components/modal/Modal.vue';
-// import ContextArticleGrid from './twig/components/context-article-grid/ContextArticleGrid.vue';
-// import Accordion from './twig/components/accordion/Accordion.vue';
-// import MediaAside from './twig/components/media-aside/MediaAside.vue';
-// import OverlayHero from './twig/components/overlay-hero/OverlayHero.vue';
-// import Video from './twig/components/video/Video.vue';
-
-// Animated
-// import TextGroup from './twig/components/text-group/TextGroup.vue';
-// import ButtonGroup from './twig/components/button-group/ButtonGroup.vue';
+import { createApp } from 'vue/dist/vue.esm-bundler';
+import mitt from 'mitt';
+import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal';
+import InstantSearch from 'vue-instantsearch/vue3/es';
 
 import './styles/styles.scss';
 
-// const emitter = mitt();
-// const app = createApp({
-//   components: {
-//     Header,
-//     Modal,
-//     TextGroup,
-//     ButtonGroup,
-//     ContextArticleGrid,
-//     Accordion,
-//     MediaAside,
-//     OverlayHero,
-//     Video,
-//   },
-// });
+const embeds = document.getElementsByClassName('embed');
+const mains = [];
 
-// app.config.globalProperties.emitter = emitter;
-// app.mount('#app');
+// Array that sweeps the document for all embed components and removes them
+Array.from(embeds).forEach((e) => {
+    const embedMain = e.getElementsByClassName('embed__main')[0];
+    mains.push(embedMain);
+    e.removeChild(embedMain);
+});
+
+const emitter = mitt();
+
+import baseComponents from '../../colby-college-theme/src/components.js';
+
+import childComponents from './components.js';
+
+const app = createApp({
+    components: Object.assign(baseComponents, childComponents),
+});
+
+app.config.globalProperties.emitter = emitter;
+app.use(InstantSearch);
+
+app.mount('#app');
+
+// Replace all embeds following Vue mounting
+for (let i = 0; i < embeds.length; i += 1) {
+    embeds[i].append(mains[i]);
+}
+
+export default app;
