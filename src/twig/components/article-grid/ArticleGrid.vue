@@ -62,7 +62,7 @@
 <script>
     import axios from 'axios';
     import moment from 'moment';
-    import TextGroup from '/src/twig/components/text-group/TextGroup.vue';
+    import TextGroup from '../../../../../colby-college-theme/src/twig/components/text-group/TextGroup.vue';
 
     export default {
         components: {
