@@ -65,7 +65,7 @@
                                                         class="text-group__heading font-extended font-normal text-20 leading-110 -tracking-3 text-left text-indigo mt-2"
                                                     >
                                                         <ais-highlight
-                                                            attribute="cleaned_title"
+                                                            attribute="post_title"
                                                             :hit="item"
                                                         />
                                                     </h2>
