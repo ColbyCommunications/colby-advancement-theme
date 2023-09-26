@@ -27,6 +27,7 @@ module.exports = {
         alias: {
             styles: path.resolve(projectRoot, 'src/styles'),
             variables: path.resolve(projectRoot, 'src/styles/global/_variables.scss'),
+            vue: path.resolve('node_modules/vue'),
         },
     },
 
