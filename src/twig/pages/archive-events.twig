@@ -11,7 +11,7 @@
 	[&>.image-grid]:px-5
   [&>.pagination]:px-5">
 
-    {% set mappedPosts = posts|map(p => {
+    {% set mappedPosts = posts|sort((a, b) => date(a.event_date) <=> date(b.event_date))|map(p => {
       post: p,
     }) %}
 
@@ -29,7 +29,8 @@
       render_api: false,
       columns: 3,
       image_orientation: 'rectangle',
-      items: mappedPosts,
+      items: mappedPosts
+
     } %}
     {% include 'pagination.twig' with {
       text: 'Showing ' ~ posts|length ~ ' of ' ~ fn( 'wp_count_posts', 'events' ).publish ~ ' results',
