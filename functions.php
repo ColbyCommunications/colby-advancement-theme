@@ -8,6 +8,8 @@
  * @since      Timber 0.1
  */
 
+ include __DIR__ . '/acf_fields.php';
+
 /**
  * If you are installing Timber as a Composer dependency in your theme, you'll need this block
  * to load your dependencies and initialize Timber. If you are using Timber via the WordPress.org
@@ -310,5 +312,4 @@ function advancement_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'advancement_theme_scripts', 100 );
 
 add_filter( 'auto_core_update_send_email', '__return_false' );
-
 
