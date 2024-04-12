@@ -79,6 +79,7 @@ class AdvancementSite extends Timber\Site {
 	 * Add timber support.
 	 */
 	public function __construct() {
+		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'acf/init', array( $this, 'my_acf_init' ) );
@@ -292,6 +293,20 @@ class AdvancementSite extends Timber\Site {
 				)
 			);
 		}
+	}
+
+	public function theme_supports() {
+		if ( function_exists( 'acf_add_options_page' ) ) {
+			acf_add_options_page(
+				array(
+					'page_title' => 'Global Settings',
+					'menu_title' => 'Global Settings',
+					'menu_slug'  => 'global-settings',
+					'redirect'   => false,
+				)
+			);
+		}
+
 	}
 }
 
