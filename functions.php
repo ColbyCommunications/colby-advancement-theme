@@ -328,3 +328,5 @@ add_action( 'wp_enqueue_scripts', 'advancement_theme_scripts', 100 );
 
 add_filter( 'auto_core_update_send_email', '__return_false' );
 
+// remove shortlinks in <head>
+remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
