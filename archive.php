@@ -44,7 +44,6 @@ if ( get_post_type() == 'events' ) {
 
 	$context['posts'] = new Timber\PostQuery(array(
 		'post_type' => 'events',
-    'post_per_page' => 6,
 		'meta_key' => 'event_date',
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
@@ -52,7 +51,7 @@ if ( get_post_type() == 'events' ) {
 		'paged' => $paged
 	));
 } else {
-	$context['posts'] = new Timber\PostQuery();
+	// $context['posts'] = new Timber\PostQuery();
 }
 
 
