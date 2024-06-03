@@ -51,7 +51,7 @@ if ( get_post_type() == 'events' ) {
 		'paged' => $paged
 	));
 } else {
-	// $context['posts'] = new Timber\PostQuery();
+	$context['posts'] = new Timber\PostQuery();
 }
 
 
