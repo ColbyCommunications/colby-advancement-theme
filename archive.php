@@ -44,13 +44,22 @@ if ( get_post_type() == 'events' ) {
 
 	$current_date = date('Y-m-d'); // Get the current date in the format YYYY-MM-DD
 
+$current_date = date('Y-m-d'); // Get the current date in the format YYYY-MM-DD
+
 $context['posts'] = new Timber\PostQuery(array(
     'post_type' => 'events',
     'meta_query' => array(
+        'relation' => 'OR',
         array(
             'key' => 'event_date',
             'value' => $current_date,
             'compare' => '>=', // Events with dates greater than or equal to the current date
+            'type' => 'DATE',
+        ),
+        array(
+            'key' => 'event_date',
+            'value' => $current_date,
+            'compare' => '=', // Today's events
             'type' => 'DATE',
         ),
     ),
