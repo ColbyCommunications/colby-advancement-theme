@@ -42,17 +42,23 @@ if ( get_post_type() == 'events' ) {
 		$paged = 1;
 	}
 
-	$context['posts'] = new Timber\PostQuery(array(
-		'post_type' => 'events',
-		'meta_key' => 'event_date',
-		'orderby' => 'meta_value',
-		'order' => 'ASC',
-		'meta_type' => 'DATE',
-		'paged' => $paged,
-		'posts_per_page' => -1,
-	));
-} else {
-	$context['posts'] = new Timber\PostQuery();
+	$current_date = date('Y-m-d'); // Get the current date in the format YYYY-MM-DD
+
+$context['posts'] = new Timber\PostQuery(array(
+    'post_type' => 'events',
+    'meta_query' => array(
+        array(
+            'key' => 'event_date',
+            'value' => $current_date,
+            'compare' => '>=', // Events with dates greater than or equal to the current date
+            'type' => 'DATE',
+        ),
+    ),
+    'orderby' => 'meta_value',
+    'order' => 'ASC',
+    'paged' => $paged,
+    'posts_per_page' => -1,
+));
 }
 
 
