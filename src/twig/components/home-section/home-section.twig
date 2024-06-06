@@ -21,9 +21,9 @@
   {% set mappedPosts = events.items %}
 {% endif %}
 
-<div class="background-section relative py-24 bg-marble__pattern bg-cover full-bleed">
-  <div class="background-section___decor absolute top-[200px] left-0 bg-white w-1/2 lg:w-[700px] h-[700px]"></div>
-  <div class="background-section___inner relative z-10 space-y-24">
+<div class="background-section relative py-24 bg-marble__pattern bg-cover full-bleed !mt-0">
+  <div class="background-section___decor absolute top-[200px] left-0 h-[700px]"></div>
+  <div class="background-section___inner pb-16 relative z-10 space-y-24">
     {% include contextArticleGrid with {
       render_api: true,
       api: 'Alumni',
@@ -49,17 +49,6 @@
         image_orientation: 'rectangle',
         items: mappedPosts,
       }  %}
-    </div>
-    <div class="max-w-screen-2xl w-full px-5 mx-auto">
-      {% include overlayWideImage with {
-        size: 'large',
-        align: 'center',
-        image: cta.image,
-        subheading: cta.subheading,
-        heading: cta.heading,
-        paragraph: cta.paragraph,
-        buttons: cta.buttons,
-      } %}
     </div>
   </div>
 </div>

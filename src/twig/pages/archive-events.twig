@@ -31,11 +31,5 @@
       image_orientation: 'rectangle',
       items: mappedPosts,
     } %}
-    {% include 'pagination.twig' with {
-      text: 'Showing ' ~ posts|length ~ ' of ' ~ fn( 'wp_count_posts', 'events' ).publish ~ ' results',
-      pages: posts.pagination.pages|map(p => p.link),
-      prev: posts.pagination.prev.link,
-      next: posts.pagination.next.link
-    } %}
 	</div>
 {% endblock %}

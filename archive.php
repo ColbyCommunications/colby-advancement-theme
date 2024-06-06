@@ -48,7 +48,8 @@ if ( get_post_type() == 'events' ) {
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
 		'meta_type' => 'DATE',
-		'paged' => $paged
+		'paged' => $paged,
+		'posts_per_page' => -1,
 	));
 } else {
 	$context['posts'] = new Timber\PostQuery();
