@@ -35,8 +35,9 @@ if ( is_day() ) {
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 }
 
-date_default_timezone_set('America/New_York');
-$current_date = date('Y-m-d G:i:s');
+$timezone = new DateTimeZone('America/New_York');
+// $current_date = date('Y-m-d G:i:s');
+$current_date = wp_date("Y-m-d G:i:s", null, $timezone );
 
 if ( get_post_type() == 'events' ) {
 	global $paged;
