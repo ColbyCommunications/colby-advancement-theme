@@ -8833,7 +8833,73 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 		'show_in_rest' => 0,
 	));
 
-
+	acf_add_local_field_group( array(
+		'key' => 'group_646157c4e0c0a',
+		'title' => 'Event Details',
+		'fields' => array(
+			array(
+				'key' => 'field_646157c578254',
+				'label' => 'Start Date',
+				'name' => 'event_date',
+				'aria-label' => '',
+				'type' => 'date_time_picker',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'F j, Y g:i a',
+				'return_format' => 'F j, Y g:i a',
+				'first_day' => 0,
+			),
+			array(
+				'key' => 'field_6679a58545b3e',
+				'label' => 'End Date',
+				'name' => 'event_end_date',
+				'aria-label' => '',
+				'type' => 'date_time_picker',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'F j, Y g:i a',
+				'return_format' => 'F j, Y g:i a',
+				'first_day' => 0,
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'events',
+				),
+			),
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'subevents',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+		'show_in_rest' => 0,
+	) );
 
 endif;
 // });
