@@ -38,29 +38,22 @@ if ( is_day() ) {
 $timezone = new DateTimeZone('America/New_York');
 // $current_date = date('Y-m-d G:i:s');
 $current_date = wp_date("Y-m-d G:i:s", null, $timezone );
+var_dump($current_date);
 
 if ( get_post_type() == 'events' ) {
-	global $paged;
 
-	if (!isset($paged) || !$paged){
-		$paged = 1;
-	}
-
-		$context['posts'] = new Timber\PostQuery(array(
+	$posts = Timber::get_posts(array(
 			'post_type' => 'events',
-			'meta_query' => array(
-					array(
-						'key' => 'event_end_date',
-						'value' => $current_date,
-						'compare' => '>',
-						'type' => 'DATE',
-					),
-			),
-			'orderby' => 'meta_value',
-			'order' => 'ASC',
-			'paged' => $paged,
+			'post_status' => array('publish'),
 			'posts_per_page' => -1,
 	));
+
+	$context['posts'] = array_filter ($posts, function($post) use ($current_date){
+		if (!$post->event_end_date){
+			return false;
+		}
+		return strtotime($post->event_end_date) > strtotime($current_date);
+	});
 }
 
 Timber::render( $templates, $context );

@@ -369,20 +369,18 @@ function past_events_render_callback( $block, $content = '', $is_preview = false
 
 	var_dump($current_date);
 
-	$context['past_events'] = new Timber\PostQuery(array(
-		'post_type' => 'events',
-		'meta_query' => array(
-			array(
-				'key' => 'event_end_date',
-				'value' => $current_date,
-				'compare' => '<', 
-				'type' => 'DATE',
-			),
-		),
-		'orderby' => 'meta_value',
-		'order' => 'DESC',
-		'posts_per_page' => -1,	
+	$posts = Timber::get_posts(array(
+			'post_type' => 'events',
+			'post_status' => array('publish'),
+			'posts_per_page' => -1,
 	));
+
+	$context['past_events'] = array_filter ($posts, function($post) use ($current_date){
+		if (!$post->event_end_date){
+			return false;
+		}
+		return strtotime($post->event_end_date) < strtotime($current_date);
+	});
 	
 	// Render the block.
 	Timber::render( 'src/twig/components/past-events/past-events.twig', $context );
