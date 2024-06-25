@@ -363,6 +363,7 @@ function past_events_render_callback( $block, $content = '', $is_preview = false
 
 	$context['block_name'] = substr( $block['name'], 4 );
 
+	date_default_timezone_set('America/New_York');
 	$current_date = date('Y-m-d G:i:s');
 
 	var_dump($current_date);

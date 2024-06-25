@@ -35,6 +35,7 @@ if ( is_day() ) {
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 }
 
+date_default_timezone_set('America/New_York');
 $current_date = date('Y-m-d G:i:s');
 
 if ( get_post_type() == 'events' ) {
