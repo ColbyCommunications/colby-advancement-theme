@@ -35,7 +35,7 @@ if ( is_day() ) {
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 }
 
-$current_date = date('Y-m-d');
+$current_date = date('Y-m-d G:i:s');
 
 if ( get_post_type() == 'events' ) {
 	global $paged;
@@ -47,18 +47,11 @@ if ( get_post_type() == 'events' ) {
 		$context['posts'] = new Timber\PostQuery(array(
 			'post_type' => 'events',
 			'meta_query' => array(
-					'relation' => 'OR',
 					array(
-							'key' => 'event_date',
-							'value' => $current_date,
-							'compare' => '>=', 
-							'type' => 'DATE',
-					),
-					array(
-							'key' => 'event_date',
-							'value' => $current_date,
-							'compare' => '=',
-							'type' => 'DATE',
+						'key' => 'event_end_date',
+						'value' => $current_date,
+						'compare' => '>',
+						'type' => 'DATE',
 					),
 			),
 			'orderby' => 'meta_value',

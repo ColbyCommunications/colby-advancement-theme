@@ -128,7 +128,9 @@
         {% elseif (item.post.post_type == 'events') or (item.post.post_type == 'subevents') %}
           {% set cta_title = 'View Event' %}
           {% set paragraph_text = item.post.preview ? item.post.preview.length(20).read_more('') : item.post.post_excerpt %}
-          {% set subheading_text = item.post.meta('event_date') ? item.post.meta('event_date')|date('F j, Y | g:i a') : item.post.event_date|date('F j, Y | g:i a') %}
+          {% set end_date = item.post.meta('event_end_date')|date('F j, Y | g:i a') %}
+          {% set start_date = item.post.meta('event_date')|date('F j, Y | g:i a') %}
+          {% set subheading_text = end_date != start_date ? start_date ~ ' - ' ~ end_date : start_date  %}
         {% else %}
           {% set cta_title = 'Read More' %}
           {% set paragraph_text = item.post.preview.length(10).read_more('') %}

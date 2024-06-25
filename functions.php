@@ -292,6 +292,23 @@ class AdvancementSite extends Timber\Site {
 					),
 				)
 			);
+
+			// register past events
+			acf_register_block(
+				array(
+					'name'            => 'past-events',
+					'title'           => __( 'Past Events' ),
+					'description'     => __( 'Advancement site exclusive block for rendering past events' ),
+					'render_callback' => 'past_events_render_callback',
+					'category'        => 'layout',
+					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
+					'keywords'        => array( 'home', 'context', 'section', 'news', 'events' ),
+					'mode'            => 'edit',
+					'supports'        => array(
+						'align' => false,
+					),
+				)
+			);
 		}
 	}
 
@@ -330,3 +347,39 @@ add_filter( 'auto_core_update_send_email', '__return_false' );
 
 // remove shortlinks in <head>
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+
+function past_events_render_callback( $block, $content = '', $is_preview = false ) {
+	
+	$context = Timber::context();
+
+	// Store block values.
+	$context['block'] = $block;
+
+	// Store field values.
+	$context['fields'] = get_fields();
+
+	// Store $is_preview value.
+	$context['is_preview'] = $is_preview;
+
+	$context['block_name'] = substr( $block['name'], 4 );
+
+	$current_date = date('Y-m-d G:i:s');
+
+	$context['past_events'] = new Timber\PostQuery(array(
+		'post_type' => 'events',
+		'meta_query' => array(
+			array(
+				'key' => 'event_end_date',
+				'value' => $current_date,
+				'compare' => '<', 
+				'type' => 'DATE',
+			),
+		),
+		'orderby' => 'meta_value',
+		'order' => 'DESC',
+		'posts_per_page' => -1,	
+	));
+	
+	// Render the block.
+	Timber::render( 'src/twig/components/past-events/past-events.twig', $context );
+}
