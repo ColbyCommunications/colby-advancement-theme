@@ -365,6 +365,8 @@ function past_events_render_callback( $block, $content = '', $is_preview = false
 
 	$current_date = date('Y-m-d G:i:s');
 
+	var_dump($current_date);
+
 	$context['past_events'] = new Timber\PostQuery(array(
 		'post_type' => 'events',
 		'meta_query' => array(
