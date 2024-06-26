@@ -367,8 +367,6 @@ function past_events_render_callback( $block, $content = '', $is_preview = false
 	// $current_date = date('Y-m-d G:i:s');
 	$current_date = wp_date("Y-m-d G:i:s", null, $timezone );
 
-	var_dump($current_date);
-
 	$posts = Timber::get_posts(array(
 			'post_type' => 'events',
 			'post_status' => array('publish'),

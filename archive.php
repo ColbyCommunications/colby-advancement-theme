@@ -38,7 +38,6 @@ if ( is_day() ) {
 $timezone = new DateTimeZone('America/New_York');
 // $current_date = date('Y-m-d G:i:s');
 $current_date = wp_date("Y-m-d G:i:s", null, $timezone );
-var_dump($current_date);
 
 if ( get_post_type() == 'events' ) {
 
