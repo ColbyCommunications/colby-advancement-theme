@@ -1,11 +1,10 @@
 
-	<div class="page__main">
+	<div class="page__main
+  [&>.article-grid]:px-5">
 
     {% set mappedPosts = past_events|map(p => {
       post: p,
     }) %}
-
-    {{ dump(mappedPosts)}}
 
     {% include 'context-section.twig' with {
       hero: true,
