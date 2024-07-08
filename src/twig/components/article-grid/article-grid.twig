@@ -130,7 +130,17 @@
           {% set paragraph_text = item.post.preview ? item.post.preview.length(20).read_more('') : item.post.post_excerpt %}
           {% set end_date = item.post.meta('event_end_date')|date('F j, Y | g:i a') %}
           {% set start_date = item.post.meta('event_date')|date('F j, Y | g:i a') %}
-          {% set subheading_text = end_date != start_date ? start_date ~ ' - ' ~ end_date : start_date  %}
+          {% set start_date_time = item.post.meta('event_date')|date('g:i a') %}
+          {% set end_date_day = item.post.meta('event_end_date')|date('F j, Y') %}
+          {% set end_date_time = item.post.meta('event_end_date')|date('g:i a') %}
+          {% set start_date_day = item.post.meta('event_date')|date('F j, Y') %}
+          {% if end_date_day == start_date_day and start_date_time == end_date_time %}
+            {% set subheading_text = start_date %}
+          {% elseif end_date_day == start_date_day and start_date_time != end_date_time %}
+            {% set subheading_text = start_date ~ ' - ' ~ end_date_time %}
+          {% else %}
+            {% set subheading_text = start_date ~ ' - ' ~ end_date   %}
+          {% endif %}
         {% else %}
           {% set cta_title = 'Read More' %}
           {% set paragraph_text = item.post.preview.length(10).read_more('') %}
