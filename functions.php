@@ -303,7 +303,7 @@ class AdvancementSite extends Timber\Site {
 					'category'        => 'layout',
 					'icon'            => file_get_contents( get_template_directory() . '/src/images/svg/c.svg' ),
 					'keywords'        => array( 'home', 'context', 'section', 'news', 'events' ),
-					'mode'            => 'edit',
+					'mode'            => 'preview',
 					'supports'        => array(
 						'align' => false,
 					),
@@ -350,36 +350,40 @@ remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
 
 function past_events_render_callback( $block, $content = '', $is_preview = false ) {
 	
-	$context = Timber::context();
+	if ( is_admin() ) {
+		echo 'Past Events Block';
+	} else {
+		$context = Timber::context();
 
-	// Store block values.
-	$context['block'] = $block;
+		// Store block values.
+		$context['block'] = $block;
 
-	// Store field values.
-	$context['fields'] = get_fields();
+		// Store field values.
+		$context['fields'] = get_fields();
 
-	// Store $is_preview value.
-	$context['is_preview'] = $is_preview;
+		// Store $is_preview value.
+		$context['is_preview'] = $is_preview;
 
-	$context['block_name'] = substr( $block['name'], 4 );
+		$context['block_name'] = substr( $block['name'], 4 );
 
-	$timezone = new DateTimeZone('America/New_York');
-	// $current_date = date('Y-m-d G:i:s');
-	$current_date = wp_date("Y-m-d G:i:s", null, $timezone );
+		$timezone = new DateTimeZone('America/New_York');
+		// $current_date = date('Y-m-d G:i:s');
+		$current_date = wp_date("Y-m-d G:i:s", null, $timezone );
 
-	$posts = Timber::get_posts(array(
-			'post_type' => 'events',
-			'post_status' => array('publish'),
-			'posts_per_page' => -1,
-	));
+		$posts = Timber::get_posts(array(
+				'post_type' => 'events',
+				'post_status' => array('publish'),
+				'posts_per_page' => -1,
+		));
 
-	$context['past_events'] = array_filter ($posts, function($post) use ($current_date){
-		if (!$post->event_end_date){
-			return false;
-		}
-		return strtotime($post->event_end_date) < strtotime($current_date);
-	});
-	
-	// Render the block.
-	Timber::render( 'src/twig/components/past-events/past-events.twig', $context );
+		$context['past_events'] = array_filter ($posts, function($post) use ($current_date){
+			if (!$post->event_end_date){
+				return false;
+			}
+			return strtotime($post->event_end_date) < strtotime($current_date);
+		});
+		
+		// Render the block.
+		Timber::render( 'src/twig/components/past-events/past-events.twig', $context );
+	}
 }
