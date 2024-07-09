@@ -1,0 +1,18 @@
+{% set mappedPosts = past_events|map(p => {
+  post: p,
+}) %}
+
+{% include 'context-section.twig' with {
+  hero: true,
+  size: 'large',
+  heading: 'Past Events',
+  align: 'center',
+} %}
+{% include 'article-grid.twig' with {
+  render_posts: false,
+  render_api: false,
+  columns: 3,
+  image_orientation: 'rectangle',
+  items: mappedPosts,
+} %}
+

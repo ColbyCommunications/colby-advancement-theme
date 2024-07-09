@@ -16,19 +16,25 @@
         menu: 'Colby Impact Menu'
       } %}
     {% endif %}
+
+   {% set image = null %}
+    {% if fn('has_post_thumbnail', post.ID) %}
+      {% set image = {
+        sizes: {
+          Hero: fn('get_the_post_thumbnail_url', post.ID, 'Hero'),
+          Rectangle: fn('get_the_post_thumbnail_url', post.ID, 'Rectangle')
+        },
+        alt: post.thumbnail.alt,
+        caption: post.thumbnail.caption
+      } %}
+    {% endif %}
+
     {% include fn('get_theme_file_path', '/src/twig/components/full-bleed-hero/full-bleed-hero.twig') with {
       type: 'light',
       subheading: template_subheading,
       heading: template_heading,
       paragraph: template_paragraph,
-      image: {
-        sizes: {
-          Hero: fn( 'get_the_post_thumbnail_url', post.ID, 'Hero' ),
-          Rectangle: fn( 'get_the_post_thumbnail_url', post.ID, 'Rectangle' )
-        },
-        alt: post.thumbnail.alt,
-        caption: post.thumbnail.caption
-      }
+      image: image
     } %}
     <div
       class="post__inner mb-20 [&>.wysiwyg]:mt-16 [&>.wysiwyg]:grid md:[&>.wysiwyg]:grid-cols-12 [&>.wysiwyg]:gap-x-10 [&>.wysiwyg]:max-w-screen-2xl [&>.wysiwyg]:w-full [&>.wysiwyg]:px-5 [&>.wysiwyg]:my-0 [&>.wysiwyg]:mx-auto
