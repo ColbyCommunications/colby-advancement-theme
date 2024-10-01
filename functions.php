@@ -387,3 +387,13 @@ function past_events_render_callback( $block, $content = '', $is_preview = false
 		Timber::render( 'src/twig/components/past-events/past-events.twig', $context );
 	}
 }
+
+add_filter(
+	'wpseo_title',
+	function ( $title ) {
+		if ( get_query_var( 'post_type' ) === 'events' && is_post_type_archive( 'events' ) ) {
+			$title = 'Event Calendar - Alumni and Families';
+		}
+		return  $title;
+	}
+);
