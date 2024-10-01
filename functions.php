@@ -397,3 +397,22 @@ add_filter(
 		return  $title;
 	}
 );
+add_filter(
+	'wpseo_opengraph_title',
+	function ( $title ) {
+		if ( get_query_var( 'post_type' ) === 'events' && is_post_type_archive( 'events' ) ) {
+			$title = 'Event Calendar - Alumni and Families';
+		}
+		return  $title;
+	}
+);
+
+add_filter(
+	'wpseo_metadesc',
+	function ( $description ) {
+		if ( get_query_var( 'post_type' ) === 'events' && is_post_type_archive( 'events' ) ) {
+			$description = 'Check out Colby College\'s Alumni and Families event calendar';
+		}
+		return  $description;
+	}
+);
