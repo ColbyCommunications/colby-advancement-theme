@@ -15,6 +15,7 @@
       <div class="sidebar-page__main xl:col-start-4 md:col-span-9">
         {% include 'article-grid.twig' with {
           columns: 3,
+          image_orientation: 'rectangle',
           items: posts|map(i => {
             post: i,
           })
