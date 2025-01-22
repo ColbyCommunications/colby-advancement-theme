@@ -12,6 +12,8 @@
 @use 'global/variables';
 @use 'global/layout';
 
+@import '../../../colby-college-theme/src/styles/styles.scss';
+
 /* Body No Scroll */
 .no-scroll {
     overflow: hidden;
