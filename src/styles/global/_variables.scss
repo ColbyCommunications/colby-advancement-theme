@@ -1,6 +1,5 @@
-@import '~foundation-sites/scss/foundation';
-@import '../mixins/mixin-typography';
-@import '../mixins/mixin-buttons';
+@use '../mixins/mixin-typography';
+@use '../mixins/mixin-buttons';
 
 // Colors
 $white: #fff;
