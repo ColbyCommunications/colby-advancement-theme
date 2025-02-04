@@ -50,5 +50,16 @@
         items: mappedPosts,
       }  %}
     </div>
+    <div class="max-w-screen-2xl w-full px-5 mx-auto">
+      {% include overlayWideImage with {
+        size: 'large',
+        align: 'center',
+        image: cta.image,
+        subheading: cta.subheading,
+        heading: cta.heading,
+        paragraph: cta.paragraph,
+        buttons: cta.buttons,
+      } %}
+    </div>
   </div>
 </div>

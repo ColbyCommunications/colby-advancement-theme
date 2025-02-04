@@ -1,6 +1,6 @@
-{% set mappedPosts = past_events|map(p => {
-  post: p,
-}) %}
+{% set mappedPosts = past_events|sort((a, b) => date(a.event_end_date) <= date(b.event_date))|map(p => {
+    post: p,
+  }) %}
 
 {% include 'context-section.twig' with {
   hero: true,

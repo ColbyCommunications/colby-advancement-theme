@@ -47,7 +47,7 @@ if ( get_post_type() == 'events' ) {
 			'posts_per_page' => -1,
 	));
 
-	$context['posts'] = array_filter ($posts, function($post) use ($current_date){
+	$context['posts'] = array_filter ($posts->to_array(), function($post) use ($current_date){
 		if (!$post->event_end_date){
 			return false;
 		}

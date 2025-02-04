@@ -376,7 +376,7 @@ function past_events_render_callback( $block, $content = '', $is_preview = false
 				'posts_per_page' => -1,
 		));
 
-		$context['past_events'] = array_filter ($posts, function($post) use ($current_date){
+		$context['past_events'] = array_filter ($posts->to_array(), function($post) use ($current_date){
 			if (!$post->event_end_date){
 				return false;
 			}
@@ -387,3 +387,32 @@ function past_events_render_callback( $block, $content = '', $is_preview = false
 		Timber::render( 'src/twig/components/past-events/past-events.twig', $context );
 	}
 }
+
+add_filter(
+	'wpseo_title',
+	function ( $title ) {
+		if ( get_query_var( 'post_type' ) === 'events' && is_post_type_archive( 'events' ) ) {
+			$title = 'Event Calendar - Alumni and Families';
+		}
+		return  $title;
+	}
+);
+add_filter(
+	'wpseo_opengraph_title',
+	function ( $title ) {
+		if ( get_query_var( 'post_type' ) === 'events' && is_post_type_archive( 'events' ) ) {
+			$title = 'Event Calendar - Alumni and Families';
+		}
+		return  $title;
+	}
+);
+
+add_filter(
+	'wpseo_metadesc',
+	function ( $description ) {
+		if ( get_query_var( 'post_type' ) === 'events' && is_post_type_archive( 'events' ) ) {
+			$description = 'Check out Colby College\'s Alumni and Families event calendar';
+		}
+		return  $description;
+	}
+);
