@@ -144,7 +144,7 @@
         {% else %}
           {% set cta_title = 'Read More' %}
           {% set paragraph_text = item.post.preview.length(10).read_more('') %}
-          {% set subheading_text = item.post.type.name == 'post' ? item.post.date|date("M d, Y") : null %}
+          {% set subheading_text = item.post.type.name == 'post' ? item.post.date : null %}
         {% endif %}
 
         {% set newItem = [{
