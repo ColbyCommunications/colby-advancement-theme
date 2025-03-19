@@ -13,6 +13,7 @@
   is="overlay-hero"
   v-slot="overlayHero"
   class="overlay-hero relative {% if not video.id %} h-[calc(100vh_-_100px)] {% if size == 'medium' %} md:h-[400px] {% endif %}{% else %}h-[calc(100vh_-_100px)] md:h-auto{% endif %} overflow-hidden"
+  {% if video %} aria-hidden="true" {% endif %}
 >
   <div
     :class="{'invisible opacity-0': overlayHero.active == true}"
