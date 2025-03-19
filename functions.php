@@ -18,7 +18,7 @@
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
 if ( file_exists( $composer_autoload ) ) {
 	include_once $composer_autoload;
-	$timber = new Timber\Timber();
+	Timber\Timber::init();
 }
 
 /**

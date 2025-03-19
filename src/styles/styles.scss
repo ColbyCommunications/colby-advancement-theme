@@ -5,12 +5,14 @@
 //
 // We also will likely remove all redundancies within tailwind.config.js
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
-@import 'global/variables';
-@import 'global/layout';
+@use 'tailwindcss/base';
+@use 'tailwindcss/components';
+@use 'tailwindcss/utilities';
+// @use 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
+@use 'global/variables';
+@use 'global/layout';
+
+@import '../../../colby-college-theme/src/styles/styles.scss';
 
 /* Body No Scroll */
 .no-scroll {
@@ -310,52 +312,51 @@
 }
 
 .accordion {
-
     &__panel + &__panel {
-      // border-top: 1px solid #dcdcdc;
+        // border-top: 1px solid #dcdcdc;
     }
-  
+
     &__header {
-      margin: 0;
+        margin: 0;
     }
-  
+
     &__button {
-      z-index: 10;
-      position: relative;
-      margin: 0;
-      border: 0;
-      padding: 20px 14px;
-      width: 100%;
-      text-align: left;
-      appearance: none;
-      cursor: pointer;
+        z-index: 10;
+        position: relative;
+        margin: 0;
+        border: 0;
+        padding: 20px 14px;
+        width: 100%;
+        text-align: left;
+        appearance: none;
+        cursor: pointer;
     }
-  
+
     &__window {
-      margin: 0;
-      height: 0;
-      overflow: hidden;
-      visibility: hidden;
-      transition: .2s ease-in-out;
+        margin: 0;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: 0.2s ease-in-out;
     }
-  
+
     &__content {
-      padding: 20px 14px;
+        padding: 20px 14px;
     }
-  
+
     p:nth-child(1) {
-      margin-top: 0;
+        margin-top: 0;
     }
-  
+
     &__test {
-      font-size: 3rem;
-      line-height: 1.125;
-      font-weight: 700;
+        font-size: 3rem;
+        line-height: 1.125;
+        font-weight: 700;
     }
-  }
-  
-  .intro-context {
+}
+
+.intro-context {
     p + p {
         @apply mt-4;
     }
-  }
+}
