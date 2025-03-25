@@ -7,15 +7,7 @@
   {% set template_paragraph = fn('has_excerpt') ? fn('get_the_excerpt') : null %}
 
 	<div class="post">
-    {% if post.type.name == 'events' %}
-      {% include 'section-nav.twig' with {
-        menu: 'Events Menu'
-      } %}
-    {% else %}
-      {% include 'section-nav.twig' with {
-        menu: 'Colby Impact Menu'
-      } %}
-    {% endif %}
+    
 
    {% set image = null %}
     {% if fn('has_post_thumbnail', post.ID) %}
@@ -34,8 +26,19 @@
       subheading: template_subheading,
       heading: template_heading,
       paragraph: template_paragraph,
-      image: image
+      image: image,
+      hero: true,
+      date: true
     } %}
+    {% if post.type.name == 'events' %}
+      {% include 'section-nav.twig' with {
+        menu: 'Events Menu'
+      } %}
+    {% else %}
+      {% include 'section-nav.twig' with {
+        menu: 'Colby Impact Menu'
+      } %}
+    {% endif %}
     <div
       class="post__inner mb-20 [&>.wysiwyg]:mt-16 [&>.wysiwyg]:grid md:[&>.wysiwyg]:grid-cols-12 [&>.wysiwyg]:gap-x-10 [&>.wysiwyg]:max-w-screen-2xl [&>.wysiwyg]:w-full [&>.wysiwyg]:px-5 [&>.wysiwyg]:my-0 [&>.wysiwyg]:mx-auto
       md:[&>.wysiwyg>.colby-paragraph-block]:col-span-8 md:[&>.wysiwyg>.colby-paragraph-block]:col-start-3
