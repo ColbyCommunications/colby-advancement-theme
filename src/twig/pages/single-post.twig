@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  {% set template_subheading = (post.type.name == 'events') ? post.meta('event_date') : post.date %}
+  {% set template_subheading = (post.type.name == 'events') ? post.meta('event_date') : '' %}
   {% set template_heading = post.title %}
   {% set template_paragraph = fn('has_excerpt') ? fn('get_the_excerpt') : null %}
 
